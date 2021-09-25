@@ -1,6 +1,6 @@
-function ItemListContainer(){
+function ItemListContainer(props){
     return(
-        <h1>hola mundo</h1>
+        <h1>{props.mensaje}</h1>
     )
 }
 
