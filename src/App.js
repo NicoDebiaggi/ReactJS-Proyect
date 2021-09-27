@@ -1,14 +1,12 @@
 import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer'
-import globalCSS from './styles/global.css'
-
-let mensaje = "Hola Mundo"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <>
       <NavBar/>
-      <ItemListContainer mensaje={mensaje}/>
+      <ItemListContainer/>
     </>
   );
 }

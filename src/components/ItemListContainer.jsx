@@ -1,6 +1,10 @@
-function ItemListContainer(props){
+import ItemList from './ItemList';
+
+let apiURL = 'https://fakestoreapi.com/products'
+
+function ItemListContainer(){
     return(
-        <h1>{props.mensaje}</h1>
+        <ItemList apiURL={apiURL}></ItemList>
     )
 }
 
