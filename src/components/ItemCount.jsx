@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import {ButtonGroup, Button} from 'react-bootstrap'
+import { ButtonGroup, Button } from 'react-bootstrap'
 
-const ItemCount = ({stock, initial}) => {
-    const [count, setCount] = useState(initial);
+const ItemCount = ({stock, initial, count, setCount, cartTask, product}) => {
     const [onAdd, setOnAdd] = useState(initial);
-    
+
     useEffect(() => {
         setCount(onAdd <= 0 ? 0 : onAdd >= stock ? stock : (onAdd))
-    }, [onAdd])
+    }, [onAdd, setCount, stock])
 
 
     const Contador = ({valor}) => <input defaultValue={valor}/>
@@ -17,7 +16,7 @@ const ItemCount = ({stock, initial}) => {
             <Button onClick={() => setOnAdd(count-1)} className="mx-3">-</Button>
             <Contador valor={count}/>
             <Button onClick={() => setOnAdd(count+1)} className="mx-3">+</Button>
-            <Button>
+            <Button onClick={() => cartTask.addProduct(product, count)}>
                 Añadir al carrito
             </Button>
         </ButtonGroup>

@@ -15,11 +15,11 @@ function ItemDetailContainer(){
                 .then(res => res.json())
                 .then(json => setProducts(json))
                 .catch(() => console.log("error"))
-    }, [])
+    }, [itemId , loading])
 
     useEffect(() => {
         product && setLoading(false) 
-    }, [product])
+    }, [product , loading])
 
     return(
         loading ?

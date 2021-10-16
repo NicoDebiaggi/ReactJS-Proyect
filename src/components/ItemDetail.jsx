@@ -1,7 +1,14 @@
-import { Row, Col, Container, Image } from "react-bootstrap";
+import { Row, Col, Container, Image, Button } from "react-bootstrap";
 import ItemCount from './ItemCount';
+import { useState } from 'react';
+import { Link } from 'react-router-dom'
+import { useCartContext } from '../contexts/CartContext';
+
 
 function ItemDetail({product}) {
+    const [count, setCount] = useState();
+    const {cart, cartTask} = useCartContext()
+    console.log(cart)
     return (
         <Container className="mb-5 p-5">
                 <Row>
@@ -31,10 +38,15 @@ function ItemDetail({product}) {
                         <br/>
                         <br/>
                         <h4><b>${product.price}</b></h4>
-                        <br/>
+                        <br/>   
                         <h5 className="mb-5">{product.description}</h5>
                         <hr className="mb-5"/>
-                        <ItemCount stock={5} initial={3}/>  
+                        <ItemCount stock={5} initial={3} count={count} setCount={setCount} cartTask={cartTask} product={product}/>  
+                        {/* cartTask.isInCart(product) ?
+                            <Button as={Link} to="/cart" variant="outline-primary">Terminar mi compra</Button>
+                            :
+                            <ItemCount stock={5} initial={3} count={count} setCount={setCount} cartTask={cartTask} product={product}/>  
+                         */}
                     </Col>
                 </Row>
         </Container>

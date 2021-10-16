@@ -13,14 +13,17 @@ function ItemListContainer(){
         category ?
             loading && fetch(apiURL + '/category/' + category)
                     .then(res => res.json())
-                    .then(json => setProducts(json))
+                    .then(json => {
+                        setProducts(json)
+                        console.log(json)
+                    } )
                     .catch(() => console.log("error"))
         :
             loading && fetch(apiURL)
                     .then(res => res.json())
                     .then(json => setProducts(json))        
                     .catch(() => console.log("error"))
-    }, [loading])
+    }, [loading, apiURL, category])
 
     useEffect(() => {
         setLoading(true)

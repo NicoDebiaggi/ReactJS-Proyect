@@ -1,32 +1,22 @@
 import CartWidget from "./CartWidget";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from 'react-router-dom'
 
 function NavBar() {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <LinkContainer to={"/"}>
-                    <Navbar.Brand>Tu E-Shop</Navbar.Brand>
-                </LinkContainer>
+                    <Navbar.Brand as={Link} to="/">Tu E-Shop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                     <Nav>
-                        <LinkContainer to={"/category/electronics"}>
-                            <Nav.Link>Electronics</Nav.Link>
-                        </LinkContainer>
+                        <Nav.Link as={Link} to="/category/electronics">Electronics</Nav.Link>
 
-                        <LinkContainer to={"/category/jewelery"}>
-                            <Nav.Link>Jewelery</Nav.Link>
-                        </LinkContainer>
+                        <Nav.Link as={Link} to="/category/jewelery">Jewelery</Nav.Link>
 
                         <NavDropdown title="Ropa" id="collasible-nav-dropdown">
-                            <LinkContainer to={"/category/men's clothing"}>
-                                <NavDropdown.Item>Men's clothing</NavDropdown.Item>
-                            </LinkContainer>
-                            <LinkContainer to={"/category/women's clothing"}>
-                                <NavDropdown.Item>Women's clothing</NavDropdown.Item>
-                            </LinkContainer>
+                            <NavDropdown.Item as={Link} to="/category/men's clothing">Men's clothing</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/category/women's clothing">Women's clothing</NavDropdown.Item>
                         </NavDropdown>
                         <CartWidget/>
                     </Nav>
