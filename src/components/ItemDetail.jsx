@@ -8,7 +8,7 @@ import { useCartContext } from '../contexts/CartContext';
 function ItemDetail({product}) {
     const [count, setCount] = useState();
     const {cart, cartTask} = useCartContext()
-    console.log(cart)
+
     return (
         <Container className="mb-5 p-5">
                 <Row>
@@ -41,12 +41,11 @@ function ItemDetail({product}) {
                         <br/>   
                         <h5 className="mb-5">{product.description}</h5>
                         <hr className="mb-5"/>
-                        <ItemCount stock={5} initial={3} count={count} setCount={setCount} cartTask={cartTask} product={product}/>  
-                        {/* cartTask.isInCart(product) ?
+                        {cartTask.isInCart(product) ?
                             <Button as={Link} to="/cart" variant="outline-primary">Terminar mi compra</Button>
                             :
                             <ItemCount stock={5} initial={3} count={count} setCount={setCount} cartTask={cartTask} product={product}/>  
-                         */}
+                        }
                     </Col>
                 </Row>
         </Container>
