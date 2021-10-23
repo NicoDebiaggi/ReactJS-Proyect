@@ -18,6 +18,7 @@ function NavBar() {
                             <NavDropdown.Item as={Link} to="/category/men's clothing">Men's clothing</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/category/women's clothing">Women's clothing</NavDropdown.Item>
                         </NavDropdown>
+                        
                         <CartWidget/>
                     </Nav>
                 </Navbar.Collapse>

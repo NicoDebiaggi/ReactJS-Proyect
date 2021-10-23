@@ -2,20 +2,20 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Loading from './Loading';
 import ItemDetail from './ItemDetail';
+import { useFireContext } from '../contexts/FireContext';
 
 
 function ItemDetailContainer(){
-    const[product, setProducts] = useState(false)
+    const[product, setProduct] = useState(false)
     const[loading, setLoading] = useState(true)
     const { itemId } = useParams();
-    const apiURL = 'https://fakestoreapi.com/products'
+    const { fireTask } = useFireContext()
+    //const apiURL = 'https://fakestoreapi.com/products'
 
     useEffect(() => {
-        loading && fetch((apiURL + '/' + itemId))
-                .then(res => res.json())
-                .then(json => setProducts(json))
-                .catch(() => console.log("error"))
-    }, [itemId , loading])
+        loading ? (setProduct(fireTask.getProduct(itemId))) : setProduct(product)
+        console.log(product)
+    }, [itemId , loading])    
 
     useEffect(() => {
         product && setLoading(false) 

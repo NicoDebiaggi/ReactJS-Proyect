@@ -1,5 +1,5 @@
 import { Row, Col, Container, Image, Button } from "react-bootstrap";
-import ItemCount from './ItemCount';
+import { ItemCount } from './ItemCount';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../contexts/CartContext';

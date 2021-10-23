@@ -1,5 +1,5 @@
 import { Card, Button, Col } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Item(props) {
     return (
@@ -9,9 +9,7 @@ function Item(props) {
                 <Card.Body>
                     <Card.Title>{props.data.title}</Card.Title>
                     <Card.Text>{props.data.description}</Card.Text>
-                    <LinkContainer to={"/item/" + props.data.id}>
-                        <Button variant="primary">See More</Button>
-                    </LinkContainer>
+                    <Button as={Link} to={"/item/" + props.data.id} variant="primary">See More</Button>
                     {props.children}
                 </Card.Body>
             </Card>
