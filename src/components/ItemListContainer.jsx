@@ -14,8 +14,9 @@ function ItemListContainer(){
         setLoading(true)
     }, [category])
 
+
     useEffect(() => {
-        loading && (setProducts(fireTask.getProducts(null, null, category)))
+        loading && fireTask.getProducts(null, null, category).then((prods) => setProducts(prods))
     }, [category, loading])
 
     useEffect(() => {

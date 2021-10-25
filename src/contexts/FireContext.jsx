@@ -33,15 +33,13 @@ export function FireProvider({children}){
         /* order && query? (query = query) : (query = productsRef.orderBy(order)) */
 
         query || (query = productsRef)
-
-        query.get()
+        return query.get()
         .then(querySnapshot => {
             querySnapshot.forEach( doc => {
-                let objToPush = {id: doc.id, ...doc.data()}
-                products.push(objToPush)
+                products.push({id: doc.id, ...doc.data()})
             })
+            return products
         })
-        return products
     }
 
     fireTask.getProduct = (id) => {

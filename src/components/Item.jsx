@@ -2,7 +2,6 @@ import { Card, Button, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function Item(props) {
-    console.log("soy un item")
     return (
         <Col style={{minWidth: 200, height: 600}}>
             <Card>
