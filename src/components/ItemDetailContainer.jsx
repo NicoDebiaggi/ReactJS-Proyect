@@ -10,16 +10,14 @@ function ItemDetailContainer(){
     const[loading, setLoading] = useState(true)
     const { itemId } = useParams();
     const { fireTask } = useFireContext()
-    //const apiURL = 'https://fakestoreapi.com/products'
 
     useEffect(() => {
-        loading ? (setProduct(fireTask.getProduct(itemId))) : setProduct(product)
-        console.log(product)
+        loading && fireTask.getProduct(itemId).then((prod) => setProduct(prod))
     }, [itemId , loading])    
 
-    useEffect(() => {
+    useEffect(() => {   
         product && setLoading(false) 
-    }, [product , loading])
+    }, [product])
 
     return(
         loading ?

@@ -9,27 +9,17 @@ function ItemListContainer(){
     const[loading, setLoading] = useState(true)
     const { category } = useParams()
     const { fireTask } = useFireContext()
-    //let apiURL = 'https://fakestoreapi.com/products'
-
-    useEffect(() => {
-        category ?
-            /* loading && fetch(apiURL + '/category/' + category)
-                    .then(res => res.json())
-                    .then(json => {
-                        setProducts(json)
-                    } )
-                    .catch(() => console.log("error")) */
-            loading && (setProducts(fireTask.getProducts(null, null, category)))
-        :
-            loading && (setProducts(fireTask.getProducts(null, null, category))) 
-    }, [category])
 
     useEffect(() => {
         setLoading(true)
     }, [category])
 
     useEffect(() => {
-        products && setLoading(false) 
+        loading && (setProducts(fireTask.getProducts(null, null, category)))
+    }, [category, loading])
+
+    useEffect(() => {
+        products && setLoading(false)
     }, [products])
 
     return(

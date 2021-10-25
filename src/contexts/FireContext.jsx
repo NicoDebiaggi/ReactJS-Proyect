@@ -40,19 +40,13 @@ export function FireProvider({children}){
                 let objToPush = {id: doc.id, ...doc.data()}
                 products.push(objToPush)
             })
-            
-        console.log(products)
         })
         return products
     }
 
     fireTask.getProduct = (id) => {
-        productsRef.doc(id).get()
-        .then( doc => {
-            let obj = {id: doc.id, ...doc.data()}
-            console.log(obj)
-            return obj
-        })
+        return productsRef.doc(id).get()
+        .then( doc => {return {id: doc.id, ...doc.data()}})
     }
 
     fireTask.putOrder = (buyer, items, total, setOrder) => {
