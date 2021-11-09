@@ -47,6 +47,3 @@ const App = () => {
 }
 
 export default App;
-
-//ToDos:
-// - hacer un Readme

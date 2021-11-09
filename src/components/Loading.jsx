@@ -1,4 +1,4 @@
-import {Spinner, Container, Row, Col} from 'react-bootstrap'
+import { Spinner, Container } from 'react-bootstrap'
 
 const Loading = () => {
     return (
