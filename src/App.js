@@ -11,7 +11,6 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <>
       <HashRouter>
         <FireProvider>
           <CartProvider>
@@ -42,7 +41,6 @@ const App = () => {
           </CartProvider>
         </FireProvider>
       </HashRouter>
-    </>
   );
 }
 
