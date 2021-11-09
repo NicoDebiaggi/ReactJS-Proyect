@@ -1,15 +1,13 @@
 import {Spinner, Container, Row, Col} from 'react-bootstrap'
 
-export default function Loading() {
+const Loading = () => {
     return (
-        <Container >
-            <Row className="justify-content-center p-5 m-5">
-                <Col xs="auto">
-                    <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                </Col>
-            </Row>
+        <Container className="d-flex align-items-center justify-content-center vh-100">
+            <Spinner animation="border" role="status" style={{zoom: "2"}}>
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
         </Container>
     ) 
 }
+
+export default Loading

@@ -1,19 +1,20 @@
 import NavBar from './components/NavBar'
-import ItemListContainer from './components/ItemListContainer'
-import ItemDetailContainer from './components/ItemDetailContainer'
-import Cart from './components/Cart'
+import ItemListContainer from './pages/ItemListContainer'
+import ItemDetailContainer from './pages/ItemDetailContainer'
+import Cart from './pages/Cart'
+import End from './pages/End'
 import { CartProvider } from './contexts/CartContext';
 import { FireProvider } from './contexts/FireContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
-function App() {
+const App = () => {
   return (
     <>
-      <FireProvider>
-        <CartProvider>
-          <Router>
+      <Router>
+        <FireProvider>
+          <CartProvider>
             <NavBar/>
             <Switch>
 
@@ -33,12 +34,19 @@ function App() {
                 <Cart/> 
               </Route>
 
+              <Route exact path="/end">
+                <End/> 
+              </Route>
+
             </Switch>
-          </Router>
-        </CartProvider>
-      </FireProvider>
+          </CartProvider>
+        </FireProvider>
+      </Router>
     </>
   );
 }
 
 export default App;
+
+//ToDos:
+// - hacer un Readme

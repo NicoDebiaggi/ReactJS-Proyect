@@ -1,7 +1,8 @@
 import firebase from "firebase/compat/app";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
+
 
 const app = firebase.initializeApp({
     apiKey: "AIzaSyClFW0w9EKGWfwhEb0LcSceS6xLg4s-psg",
@@ -21,18 +22,26 @@ const Context = createContext()
 
 export const useFireContext = () => useContext(Context)
 
-export function FireProvider({children}){
+export const FireProvider = ({children}) => {
+    const [orderState, setOrderState] = useState(null)
+    const [orderMessage, setOrderMessage] = useState("Error")
+
     const fireTask = {}
 
-    fireTask.getProducts = (order, price, category) => {
+    fireTask.orderState = orderState; 
+    fireTask.setOrderState = setOrderState; 
+    fireTask.orderMessage = orderMessage; 
+    fireTask.setOrderMessage = setOrderMessage; 
+
+    fireTask.getProducts = (price, category) => {
         let query;
         let products = [];
 
-        /* price && (query = productsRef.where("price", "<", price)) */
-        category? query? (query = query.where("category", "==", category)) : (query = productsRef.where("category", "==", category)) : (query = query)
-        /* order && query? (query = query) : (query = productsRef.orderBy(order)) */
+        price && (query = productsRef.where("price", "<", price))
+        category && (query? (query = query.where("category", "==", category)) : (query = productsRef.where("category", "==", category)))
 
         query || (query = productsRef)
+
         return query.get()
         .then(querySnapshot => {
             querySnapshot.forEach( doc => {
@@ -47,31 +56,23 @@ export function FireProvider({children}){
         .then( doc => {return {id: doc.id, ...doc.data()}})
     }
 
-    fireTask.putOrder = (buyer, items, total, setOrder) => {
+    fireTask.putOrder = (buyer, items, total) => {
         ordersRef.add({
             buyer: buyer,
             items: items,
             date: firebase.firestore.Timestamp.now(),
             total: total
         })
-        .then(setOrder("Felicitaciones por tu compra!"))
+        .then(() => {
+            setOrderMessage("Felicitaciones por tu compra!")
+            setOrderState(true)
+        })
         .catch((error) => {
-            setOrder(`Hubo un error con tu compra intentalo de nuevo mas tarde`)
+            setOrderMessage(`Hubo un error con tu compra intentalo de nuevo mas tarde`)
+            setOrderState(false)
             console.error(error)
         })
     }
-
-    fireTask.addProduct = (product) => { 
-        /*productsRef.add({
-            title: product.title,
-            price: product.price,
-            description: product.description,
-            category: product.category,
-            image: product.image,
-            rating: product.rating
-        })  */
-    }
-
 
     return (
         <Context.Provider value={{fireTask}}>

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 import { useCartContext } from '../contexts/CartContext';
 
 
-function ItemDetail({product}) {
+const ItemDetail = ({product}) => {
     const [count, setCount] = useState();
-    const {cart, cartTask} = useCartContext()
+    const { cartTask } = useCartContext()
 
     return (
         <Container className="mb-5 p-5">
@@ -44,7 +44,7 @@ function ItemDetail({product}) {
                         {cartTask.isInCart(product) ?
                             <Button as={Link} to="/cart" variant="outline-primary">Terminar mi compra</Button>
                             :
-                            <ItemCount stock={5} initial={3} count={count} setCount={setCount} cartTask={cartTask} product={product}/>  
+                            <ItemCount stock={product.stock} initial={1} count={count} setCount={setCount} cartTask={cartTask} product={product}/>  
                         }
                     </Col>
                 </Row>

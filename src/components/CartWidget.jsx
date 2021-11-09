@@ -1,10 +1,10 @@
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { HiShoppingCart } from "react-icons/hi";
 import { useCartContext } from '../contexts/CartContext';
 import { Nav } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
-function CartWidget(){
+const CartWidget = () => {
     const {cart, cartTask} = useCartContext()
     const [widgetTotal, setWidgetTotal] = useState()
 
@@ -14,8 +14,8 @@ function CartWidget(){
 
     return(
         <Nav.Link as={Link} to="/cart">
-            <ShoppingCartIcon/>
-            {(widgetTotal == 0) ? null : widgetTotal}
+            <HiShoppingCart style={{fontSize: '30px'}}/>
+            {(widgetTotal === 0) ? null : widgetTotal}
         </Nav.Link>
     )
 }

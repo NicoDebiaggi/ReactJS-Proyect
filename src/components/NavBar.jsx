@@ -2,11 +2,11 @@ import CartWidget from "./CartWidget";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-function NavBar() {
+const NavBar = () =>{
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                    <Navbar.Brand as={Link} to="/">Tu E-Shop</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/">E-Shop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                     <Nav>
