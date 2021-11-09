@@ -98,9 +98,9 @@ This are the steps required to run the application
 
 This proyect is an example of E-Commerce, in the following videos you can see the navigation flow.
 
-![Alt Text](https://media.giphy.com/media/i8dSjQ7kZ6zJ6BoVAh/giphy.gif) 
-![Alt Text](https://media.giphy.com/media/wjdE9r72bKJZYpT8QI/giphy.gif)
-![Alt Text](https://media.giphy.com/media/s8uIWa9m3vyVvf4CMA/giphy.gif)
+![gif](https://media.giphy.com/media/i8dSjQ7kZ6zJ6BoVAh/giphy.gif) 
+![gif](https://media.giphy.com/media/wjdE9r72bKJZYpT8QI/giphy.gif)
+![gif](https://media.giphy.com/media/s8uIWa9m3vyVvf4CMA/giphy.gif)
 
 
 <!-- CONTACT -->
