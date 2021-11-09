@@ -21,7 +21,7 @@ const End = () => {
             </Row>
 
             <Row>
-                <h1>{fireTask.orderMessage}</h1>
+                <pre><h1>{fireTask.orderMessage}</h1></pre>
             </Row>
 
             <Row className="justify-content-around">

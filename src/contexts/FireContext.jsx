@@ -63,8 +63,8 @@ export const FireProvider = ({children}) => {
             date: firebase.firestore.Timestamp.now(),
             total: total
         })
-        .then(() => {
-            setOrderMessage("Felicitaciones por tu compra!")
+        .then((res) => {
+            setOrderMessage("Felicitaciones por tu compra! \n Tu numero de orden es:" + res.id)
             setOrderState(true)
         })
         .catch((error) => {
