@@ -6,13 +6,13 @@ import End from './pages/End'
 import { CartProvider } from './contexts/CartContext';
 import { FireProvider } from './contexts/FireContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 
 
 const App = () => {
   return (
     <>
-      <Router>
+      <HashRouter>
         <FireProvider>
           <CartProvider>
             <NavBar/>
@@ -41,7 +41,7 @@ const App = () => {
             </Switch>
           </CartProvider>
         </FireProvider>
-      </Router>
+      </HashRouter>
     </>
   );
 }
